@@ -27,15 +27,15 @@ const startTimes = getData();
 router.get("/usage", (req, res, next) => {
   setTimeout(() => {
     const endTimes = getData();
+    const totalIdle = endTimes.idle - startTimes.idle;
+    const totalUsage = endTimes.total - startTimes.total;    
 
-    const idle = endTimes.idle - startTimes.idle;
-    const total = endTimes.total - startTimes.total;
-    const usage = ((1 - idle / total) * 100).toFixed(2);
+    const usageAvg = ((1 - totalIdle / totalUsage) * 100).toFixed(2);
     console.log(`CPU usage ${usage}%`);
     
-    res.send({ usage: usage });
+    res.send({ usage: usageAvg });
   }, 1000);
-  next();
+
 });
 
 module.exports = router;

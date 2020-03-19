@@ -31,7 +31,7 @@ router.get("/usage", (req, res, next) => {
     const totalUsage = endTimes.total - startTimes.total;    
 
     const usageAvg = ((1 - totalIdle / totalUsage) * 100).toFixed(2);
-    console.log(`CPU usage ${usage}%`);
+    console.log(`CPU usage ${usageAvg}%`);
     
     res.send({ usage: usageAvg });
   }, 1000);

@@ -5,7 +5,7 @@ const middleware = cors();
 
 const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json();
-const port = 4000
+const port = process.env.PORT || 4000;
 const cpuUsage = require('./api/cpuUsage')
 
 app.use(middleware);
